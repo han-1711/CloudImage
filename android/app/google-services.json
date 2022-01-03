@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "644346791111",
+    "project_id": "farhan-firebase",
+    "storage_bucket": "farhan-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644346791111:android:382e400c89b25f9b2eeae2",
+        "android_client_info": {
+          "package_name": "com.example.editfoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644346791111-4vdgrpvn8idnarb450gt1q2uphuqc5l1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.editfoto",
+            "certificate_hash": "f81d1649d1d743df9b7ed29eaaa10d1ed9354b53"
+          }
+        },
+        {
+          "client_id": "644346791111-0ipjoav07qv78g34u9n7k6lbbl1s79s8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmgtJcLq0rof-Plcxa9_r0NN0B0V66FUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644346791111-0ipjoav07qv78g34u9n7k6lbbl1s79s8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
