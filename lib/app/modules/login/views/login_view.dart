@@ -1,4 +1,5 @@
 import 'package:editfoto/app/controllers/auth_controller.dart';
+import 'package:editfoto/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,8 +7,8 @@ import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  final emailC = TextEditingController();
-  final passC = TextEditingController();
+  final emailC = TextEditingController(text: "ha@gmail.com");
+  final passC = TextEditingController(text: "farhan");
 
   final authC = Get.find<AuthController>();
   @override
@@ -53,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                     TextFormField(
                       controller: emailC,
                       decoration: InputDecoration(
-                        labelText: 'Username',
+                        labelText: 'Email',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -65,10 +66,11 @@ class LoginView extends GetView<LoginController> {
                       autocorrect: false,
                       decoration: InputDecoration(
                         labelText: 'Password',
+                        border: OutlineInputBorder(),
                       ),
                       validator: (String value) {
                         if (value.trim().isEmpty) {
-                          return 'Password is required';
+                          return 'Wajib Mengisi Password';
                         }
                       },
                     ),
@@ -97,14 +99,13 @@ class LoginView extends GetView<LoginController> {
                   ],
                 ),
                 SizedBox(height: 50),
-                Center(
-                  child: Text(
-                    "Create an account",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text('Belum punya akun ?'),
+                  TextButton(
+                    onPressed: () => Get.toNamed(Routes.REGISTRASI),
+                    child: Text('Buat akun'),
+                  )
+                ])
               ],
             ),
           ),

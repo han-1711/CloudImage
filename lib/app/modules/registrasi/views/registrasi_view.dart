@@ -1,3 +1,4 @@
+import 'package:editfoto/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -44,7 +45,7 @@ class RegistrasiView extends GetView<RegistrasiController> {
                   ),
                 ),
                 SizedBox(
-                  height: 80,
+                  height: 50,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,6 +53,7 @@ class RegistrasiView extends GetView<RegistrasiController> {
                     TextFormField(
                       decoration: const InputDecoration(
                         labelText: 'Username',
+                        border: OutlineInputBorder(),
                       ),
                     ),
                     SizedBox(height: 20, width: 400),
@@ -60,6 +62,7 @@ class RegistrasiView extends GetView<RegistrasiController> {
                       enableSuggestions: false,
                       autocorrect: false,
                       decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
                         labelText: 'Password',
                       ),
                       validator: (String value) {
@@ -93,14 +96,13 @@ class RegistrasiView extends GetView<RegistrasiController> {
                   ],
                 ),
                 SizedBox(height: 50),
-                Center(
-                  child: Text(
-                    "Have an account",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text('Sudah punya akun ?'),
+                  TextButton(
+                    onPressed: () => Get.toNamed(Routes.LOGIN),
+                    child: Text('Login'),
+                  )
+                ])
               ],
             ),
           ),
