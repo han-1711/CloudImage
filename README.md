@@ -1,4 +1,4 @@
-# CLoudImage
+# CloudImage
 
 A new Flutter project.
 
