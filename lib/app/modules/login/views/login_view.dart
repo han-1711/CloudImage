@@ -6,13 +6,15 @@ import 'package:get/get.dart';
 
 import '../controllers/login_controller.dart';
 
+//2
 class LoginView extends GetView<LoginController> {
-  final emailC = TextEditingController(text: "ha@gmail.com");
-  final passC = TextEditingController(text: "farhan");
+  final emailC = TextEditingController(text: "");
+  final passC = TextEditingController(text: "");
 
   final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
+    // void togglePasswordVisibility() => setState(() => isHidden = !isHidden);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -67,6 +69,10 @@ class LoginView extends GetView<LoginController> {
                       decoration: InputDecoration(
                         labelText: 'Password',
                         border: OutlineInputBorder(),
+                        // prefixIcon: Icon(Icons.lock),
+                        // suffixIcon: IconButton( icon: isHidden ? Icon(Icons.visibility_off): Icon(Icons.visibility_on),
+                        // )
+                        // onPressed: togglePasswordVisibility(),
                       ),
                       validator: (String value) {
                         if (value.trim().isEmpty) {
@@ -98,7 +104,14 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ],
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 30),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text('Lupa password?'),
+                  TextButton(
+                    onPressed: () => Get.toNamed(Routes.RESET_PASSWORD),
+                    child: Text('Reset'),
+                  )
+                ]),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text('Belum punya akun ?'),
                   TextButton(

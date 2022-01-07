@@ -6,7 +6,7 @@ class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   Stream<User> get streamAuthStatus => auth.authStateChanges();
-
+  //Inheritance 3
   void login(String email, String password) async {
     try {
       UserCredential userCredential =
@@ -26,7 +26,8 @@ class AuthController extends GetxController {
 
   void signup(String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -45,5 +46,31 @@ class AuthController extends GetxController {
   void logout() async {
     await FirebaseAuth.instance.signOut();
     Get.offAllNamed(Routes.LOGIN);
+  }
+
+  void resetPassword(String email) async {
+    if (email != "" && GetUtils.isEmail(email)) {
+      try {
+        await auth.sendPasswordResetEmail(email: email);
+        Get.defaultDialog(
+            title: "Berhasil",
+            middleText: "Kami telah mengirim reset password ke email $email",
+            onConfirm: () {
+              Get.back();
+              Get.back();
+            },
+            textConfirm: "Tutup.");
+      } catch (e) {
+        Get.defaultDialog(
+          title: "Terjadi Kesalahan",
+          middleText: "Tidak dapat mengirimkan reset password",
+        );
+      }
+    } else {
+      Get.defaultDialog(
+        title: "Terjadi Kesalahan",
+        middleText: "Email tidak valid",
+      );
+    }
   }
 }

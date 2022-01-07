@@ -1,18 +1,17 @@
-import 'package:editfoto/app/routes/app_pages.dart';
-import 'package:flutter/material.dart';
-import 'package:editfoto/app/routes/app_pages.dart';
-import 'package:get/get.dart';
 import 'package:editfoto/app/controllers/auth_controller.dart';
-import '../controllers/registrasi_controller.dart';
-
+import 'package:editfoto/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class RegistrasiView extends GetView<RegistrasiController> {
+import '../controllers/reset_password_controller.dart';
+
+class ResetPasswordView extends GetView<ResetPasswordController> {
   final emailC = TextEditingController(text: "");
   final passC = TextEditingController(text: "");
+
   final authC = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,51 +38,35 @@ class RegistrasiView extends GetView<RegistrasiController> {
                   width: 200,
                   height: 200,
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 20),
                 Text(
-                  "Registrasi",
+                  "Reset Akun",
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 80,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextFormField(
                       controller: emailC,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
+                      decoration: InputDecoration(
+                        labelText: 'Email',
                         border: OutlineInputBorder(),
                       ),
-                    ),
-                    SizedBox(height: 20, width: 400),
-                    TextFormField(
-                      controller: passC,
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
-                      ),
-                      validator: (String value) {
-                        if (value.trim().isEmpty) {
-                          return 'Password is required';
-                        }
-                      },
                     ),
                     SizedBox(height: 50, width: 400),
                     ElevatedButton(
-                      onPressed: () => authC.signup(emailC.text, passC.text),
+                      onPressed: () => authC.resetPassword(emailC.text),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Registrasi",
+                            "Reset",
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -102,10 +85,17 @@ class RegistrasiView extends GetView<RegistrasiController> {
                 ),
                 SizedBox(height: 50),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text('Sudah punya akun ?'),
+                  Text('Sudah punya akun?'),
                   TextButton(
                     onPressed: () => Get.toNamed(Routes.LOGIN),
                     child: Text('Login'),
+                  )
+                ]),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text('Belum punya akun ?'),
+                  TextButton(
+                    onPressed: () => Get.toNamed(Routes.REGISTRASI),
+                    child: Text('Buat akun'),
                   )
                 ])
               ],
